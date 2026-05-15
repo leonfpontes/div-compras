@@ -97,7 +97,20 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 760px) {
+  .partilha-main  { padding: 0 0.85rem 3rem; }
+  .partilha-card  { border-radius: 14px; }
+}
+
 @media (max-width: 600px) {
-  .partilha-card        { padding: 1.5rem; }
-  .partilha-total-value { font-size: 1.45rem; }
+  .partilha-main        { padding: 0 0 2rem; }
+  .partilha-card        {
+    padding: 1.4rem 1.1rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 4px 20px rgba(100, 50, 10, 0.10);
+  }
+  .partilha-total-value { font-size: 1.5rem; }
+  .partilha-name        { letter-spacing: 0.03em; }
 }

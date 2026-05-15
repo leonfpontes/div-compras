@@ -617,11 +617,80 @@ main {
 }
 
 /* ============================================================
-   Responsive
+   Responsive — tablet
+   ============================================================ */
+@media (max-width: 760px) {
+  .site-header { padding: 2.2rem 1rem 1.4rem; }
+
+  main { padding: 1.5rem 1rem 5rem; }
+
+  /* larger tap target on cards */
+  .card-btn { min-height: 44px; font-size: 0.88rem; }
+}
+
+/* ============================================================
+   Responsive — mobile
    ============================================================ */
 @media (max-width: 600px) {
-  .modal-panel       { padding: 1.5rem; }
-  .modal-total-value { font-size: 1.45rem; }
-  .item-table        { font-size: 0.82rem; }
-  .pix-key-value     { font-size: 0.9rem; }
+  /* ── Header ── */
+  .site-header     { padding: 1.8rem 1rem 1.2rem; }
+  .header-symbol   { font-size: 1.8rem; margin-bottom: 0.4rem; }
+  .site-subtitle   { font-size: 0.82rem; }
+
+  /* ── Cards grid ── */
+  main             { padding: 1.2rem 0.85rem 5rem; }
+  .cards-grid      { gap: 1rem; }
+  .person-card     { padding: 1.2rem 1rem; }
+  .card-avatar     { width: 48px; height: 48px; font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .card-name       { font-size: 1rem; }
+  .card-total      { font-size: 1.35rem; margin-bottom: 0.9rem; }
+  .card-btn        { min-height: 44px; font-size: 0.86rem; padding: 0.6rem 1rem; }
+
+  /* ── Modal → bottom sheet ── */
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-panel {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    padding: 1.6rem 1.2rem 2rem;
+    transform: translateY(100%);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .modal-overlay.is-open .modal-panel {
+    transform: translateY(0);
+  }
+
+  /* drag handle hint */
+  .modal-panel::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border-bright);
+    margin: 0 auto 1.2rem;
+  }
+
+  .modal-title     { font-size: 1.3rem; }
+  .modal-total-value { font-size: 1.5rem; }
+
+  /* ── Item table ── */
+  .item-table      { font-size: 0.82rem; }
+  .item-table th,
+  .item-table td   { padding: 0.45rem 0.35rem; }
+
+  /* ── PIX section ── */
+  .pix-key-value   { font-size: 0.9rem; }
+  .pix-key-row     { flex-direction: column; align-items: stretch; }
+  .pix-copy-btn    { width: 100%; min-height: 46px; font-size: 0.9rem; }
+
+  /* ── Modal action buttons — full width stacked ── */
+  .modal-actions   { flex-direction: column; }
+  .share-btn,
+  .mark-paid-btn   { min-height: 46px; font-size: 0.9rem; width: 100%; }
 }

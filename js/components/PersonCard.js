@@ -64,19 +64,20 @@ class PersonCard {
       }
     });
 
-    this._applyPaidState();
+    this._applyPaidState(card);
     return card;
   }
 
   /** Reflects current paid state on the card without rebuilding the DOM. */
   refresh() {
-    this._applyPaidState();
+    this._applyPaidState(this.element);
   }
 
-  _applyPaidState() {
-    const paid = this._paidStore.isPaid(this._person.id);
-    this.element.classList.toggle('card--paid', paid);
-    const badge = this.element.querySelector('.paid-badge');
+  /** @param {HTMLElement} el */
+  _applyPaidState(el) {
+    const paid  = this._paidStore.isPaid(this._person.id);
+    el.classList.toggle('card--paid', paid);
+    const badge = el.querySelector('.paid-badge');
     if (badge) badge.style.display = paid ? 'block' : 'none';
   }
 }

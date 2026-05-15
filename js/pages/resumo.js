@@ -179,6 +179,7 @@ class ResumoPage {
           <div class="nf-grand-bar-fill" style="width:${grandPct}%"></div>
           <span class="nf-grand-bar-label">${Math.round(grandPct)}% da nota pago</span>
         </div>
+        <div class="nf-table-wrap">
         <table class="item-table nota-fiscal-table">
           <thead>
             <tr>
@@ -196,6 +197,7 @@ class ResumoPage {
             </tr>
           </tfoot>
         </table>
+        </div>
       </section>
     `;
   }

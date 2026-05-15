@@ -413,10 +413,44 @@
   .resumo-stats {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* nota fiscal: header vira coluna, resumo embaixo */
+  .nota-fiscal {
+    padding: 1.1rem 1rem 1rem;
+  }
+
+  .nota-fiscal-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .nota-fiscal-summary {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nfs-label { display: inline; margin-bottom: 0; }
+  .nfs-of    { display: inline; }
+
+  /* tabela da nota: scroll horizontal quando apertar */
+  .nf-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  .nota-fiscal-table {
+    min-width: 380px;
+  }
 }
 
 @media (max-width: 500px) {
-  .resumo-container { padding: 1.2rem 0.85rem 5rem; }
+  .resumo-container { padding: 1.2rem 0.75rem 5rem; }
 
   .resumo-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -438,4 +472,30 @@
   .rp-total { font-size: 1rem; }
 
   .resumo-person-items { padding: 0.6rem 0.75rem 0.85rem; }
+
+  /* nota fiscal em tela pequena */
+  .nota-fiscal {
+    padding: 1rem 0.85rem 0.9rem;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+
+  .nota-fiscal-title  { font-size: 1rem; }
+
+  .nota-fiscal-table th,
+  .nota-fiscal-table td {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.4rem;
+  }
+
+  .nota-fiscal-table .num {
+    white-space: nowrap;
+  }
+
+  .nf-item-cell { min-width: 120px; }
+
+  .nfs-value { font-size: 1.05rem; }
 }

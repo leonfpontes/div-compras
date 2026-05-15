@@ -1,0 +1,107 @@
+/* ============================================================
+   partilha.css — styles specific to the single-person page
+   ============================================================ */
+
+.partilha-greeting {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.partilha-name {
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, var(--copper) 0%, var(--gold) 40%, var(--gold-light) 60%, var(--gold) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 5s linear infinite;
+  margin-bottom: 0;
+}
+
+/* ── Main layout ── */
+.partilha-main {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 14rem;
+}
+
+.partilha-card {
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+              linear-gradient(145deg, rgba(201,168,76,0.30), rgba(180,96,48,0.18), rgba(201,168,76,0.14)) border-box;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: var(--shadow-gold), 0 24px 64px rgba(0,0,0,0.60);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 100px), transparent 100%);
+  mask-image: linear-gradient(to bottom, black calc(100% - 100px), transparent 100%);
+}
+
+/* ── Section title ── */
+.partilha-section-title {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Total row ── */
+.partilha-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  margin-bottom: 1.3rem;
+}
+
+.partilha-total-row span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.partilha-total-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(201, 168, 76, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Not found ── */
+.partilha-not-found {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.partilha-not-found h1 {
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+
+.partilha-not-found p {
+  color: var(--muted);
+  max-width: 320px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .partilha-card        { padding: 1.5rem; }
+  .partilha-total-value { font-size: 1.45rem; }
+}

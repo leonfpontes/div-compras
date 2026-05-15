@@ -133,7 +133,7 @@ class PixModal {
   _shareLink() {
     if (!this._person) return;
 
-    const url      = `${location.origin}${location.pathname}?p=${this._person.id}`;
+    const url      = `${location.origin}/p/${this._person.id}`;
     const btn      = this._element.querySelector('.share-btn');
     const feedback = this._element.querySelector('.actions-feedback');
 

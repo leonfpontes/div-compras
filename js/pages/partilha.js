@@ -11,8 +11,11 @@ class PartilhaPage {
   }
 
   _init() {
-    const id     = new URLSearchParams(location.search).get('p');
-    const person = id ? Store.people.find(p => p.id === id) : null;
+    // Vercel rewrite keeps the original pathname (/p/:id) visible to the browser,
+    // so location.search is empty. Fall back to extracting the id from the path.
+    const params   = new URLSearchParams(location.search);
+    const id       = params.get('p') || location.pathname.replace(/^\/p\//, '') || null;
+    const person   = id ? Store.people.find(p => p.id === id) : null;
 
     if (!person) {
       this._renderNotFound();

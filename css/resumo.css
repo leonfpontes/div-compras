@@ -376,6 +376,29 @@
   color: var(--muted);
 }
 
+/* item doação ao terreiro */
+.nf-row--donation {
+  background: rgba(139, 94, 26, 0.055);
+}
+
+.nf-row--donation td {
+  color: var(--text-soft);
+}
+
+.nf-donation-badge {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gold);
+  background: rgba(139, 94, 26, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.12rem 0.55rem;
+}
+
 .nota-fiscal-table {
   margin-bottom: 0;
 }

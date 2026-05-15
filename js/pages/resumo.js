@@ -112,20 +112,37 @@ class ResumoPage {
   }
 
   _renderPurchasesTable() {
-    const purchases  = Store.purchases;
-    const paidByItem = this._computePaidByItem();
-    const grandTotal = purchases.reduce((s, i) => s + i.qty * i.unitPrice, 0);
-    const grandPaid  = purchases.reduce((s, i) => s + Math.min(i.qty * i.unitPrice, paidByItem[i.label] || 0), 0);
-    const grandPct   = grandTotal > 0 ? (grandPaid / grandTotal) * 100 : 0;
+    const purchases   = Store.purchases;
+    const paidByItem  = this._computePaidByItem();
+    // exclui doações do cálculo de progresso (não são cobradas de ninguém)
+    const billItems   = purchases.filter(i => !i.donation);
+    const grandTotal  = purchases.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+    const billTotal   = billItems.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+    const billPaid    = billItems.reduce((s, i) => s + Math.min(i.qty * i.unitPrice, paidByItem[i.label] || 0), 0);
+    const grandPct    = billTotal > 0 ? (billPaid / billTotal) * 100 : 0;
+    const donationTotal = purchases.filter(i => i.donation).reduce((s, i) => s + i.qty * i.unitPrice, 0);
 
     const rows = purchases.map(item => {
-      const total   = item.qty * item.unitPrice;
-      const itemPaid = Math.min(total, paidByItem[item.label] || 0);
-      const pct     = total > 0 ? Math.min(100, (itemPaid / total) * 100) : 0;
-      const done    = pct >= 99.9;
-      const qtyFmt  = Number.isInteger(item.qty)
+      const total    = item.qty * item.unitPrice;
+      const qtyFmt   = Number.isInteger(item.qty)
         ? item.qty
         : item.qty.toLocaleString('pt-BR') + ' kg';
+
+      if (item.donation) {
+        return `<tr class="nf-row nf-row--donation">
+          <td class="nf-item-cell">
+            <span class="nf-item-name">${item.label}</span>
+            <span class="nf-donation-badge">🎁 Doação ao Terreiro</span>
+          </td>
+          <td class="num">${qtyFmt}</td>
+          <td class="num">${Formatter.BRL(item.unitPrice)}</td>
+          <td class="num">${Formatter.BRL(total)}</td>
+        </tr>`;
+      }
+
+      const itemPaid = Math.min(total, paidByItem[item.label] || 0);
+      const pct      = total > 0 ? Math.min(100, (itemPaid / total) * 100) : 0;
+      const done     = pct >= 99.9;
 
       return `<tr class="nf-row${done ? ' nf-row--done' : ''}">
         <td class="nf-item-cell">
@@ -148,12 +165,12 @@ class ResumoPage {
         <div class="nota-fiscal-header">
           <div>
             <h2 class="nota-fiscal-title">🛒 O que foi comprado</h2>
-            <p class="nota-fiscal-subtitle">Lista completa — itens riscados já foram 100% pagos</p>
+            <p class="nota-fiscal-subtitle">Itens riscados = 100% pagos &middot; 🎁 = doação ao terreiro</p>
           </div>
           <div class="nota-fiscal-summary">
             <span class="nfs-label">Pago da nota</span>
-            <strong class="nfs-value">${Formatter.BRL(grandPaid)}</strong>
-            <span class="nfs-of">de ${Formatter.BRL(grandTotal)}</span>
+            <strong class="nfs-value">${Formatter.BRL(billPaid)}</strong>
+            <span class="nfs-of">de ${Formatter.BRL(billTotal)} (+ ${Formatter.BRL(donationTotal)} doados)</span>
           </div>
         </div>
         <div class="nf-grand-bar" role="progressbar"

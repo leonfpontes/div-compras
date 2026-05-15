@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b03a12"/>
+      <stop offset="50%" stop-color="#c05020"/>
+      <stop offset="100%" stop-color="#a07020"/>
+    </linearGradient>
+    <linearGradient id="star" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e8"/>
+      <stop offset="100%" stop-color="#fde0a0"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded square background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- 4-pointed star ✦ -->
+  <polygon
+    points="16,4 19,13 28,16 19,19 16,28 13,19 4,16 13,13"
+    fill="url(#star)"
+  />
+</svg>

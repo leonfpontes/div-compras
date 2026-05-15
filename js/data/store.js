@@ -45,10 +45,11 @@ const Store = Object.freeze({
       id: 'kessy',
       name: 'Kessy',
       items: [
-        { label: 'Garfo de Exu',    qty: 3,  unitPrice: 3.90 },
-        { label: 'Punhal',          qty: 3,  unitPrice: 4.90 },
-        { label: 'Cabaça 4',        qty: 1,  unitPrice: 39.90 },
-        { label: 'Esfera de Ferro', qty: 10, unitPrice: 4.00 },
+        { label: 'Garfo de Exu',    qty: 3,    unitPrice: 3.90 },
+        { label: 'Punhal',          qty: 3,    unitPrice: 4.90 },
+        { label: 'Cabaça 4',        qty: 1,    unitPrice: 39.90 },
+        { label: 'Esfera de Ferro', qty: 10,   unitPrice: 4.00 },
+        { label: 'Banha de Ori',    qty: 0.175, unitPrice: 170.00 },
       ],
     },
     {
@@ -162,7 +163,7 @@ const Store = Object.freeze({
     { label: 'Pemba Verde',                qty: 4,     unitPrice: 1.00   },
     { label: 'Bacia de Ágata 40',          qty: 1,     unitPrice: 77.90  },
     { label: 'Garfo de Exu sem pé 10cm',   qty: 44,    unitPrice: 3.90   },
-    { label: 'Banha de Ori',               qty: 0.175, unitPrice: 170.00, donation: true },
+    { label: 'Banha de Ori',               qty: 0.175, unitPrice: 170.00 },
     { label: 'Cabaça 0',                   qty: 3,     unitPrice: 4.00   },
   ]),
 });

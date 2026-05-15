@@ -20,4 +20,4 @@ Esfera de ferro: 10 para a Kessy
 Conjunto de Ração: Leonardo
 Gamela Oval Grande: 1 para a Tchuca
 Cabaça 0: 3 para o Leonardo
-Banha de Ori: Presente para o Terreiro  
+Banha de Ori: Kessy

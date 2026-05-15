@@ -21,6 +21,29 @@ class ResumoPage {
     return person.items.reduce((sum, i) => sum + i.qty * i.unitPrice, 0);
   }
 
+  /**
+   * Para cada item da nota fiscal, calcula quanto já foi pago
+   * somando os itens das pessoas que estão marcadas como pagas.
+   * Resolve as diferenças entre labels abreviados (pessoas) e completos (compras).
+   * @returns {Object} purchaseLabel → valor pago (R$)
+   */
+  _computePaidByItem() {
+    const LABEL_MAP = {
+      'Garfo de Exu':    'Garfo de Exu sem pé 10cm',
+      'Punhal':          'Punhal tamanho 2',
+      'Conjunto de Ração': 'Conjunto Ração Feminino',
+    };
+    const paid = {};
+    Store.people.forEach(person => {
+      if (!this._paidStore.isPaid(person.id)) return;
+      person.items.forEach(item => {
+        const key = LABEL_MAP[item.label] || item.label;
+        paid[key] = (paid[key] || 0) + item.qty * item.unitPrice;
+      });
+    });
+    return paid;
+  }
+
   // ── Render ───────────────────────────────────────────────────────────────
 
   _render() {
@@ -89,26 +112,56 @@ class ResumoPage {
   }
 
   _renderPurchasesTable() {
-    const purchases   = Store.purchases;
-    const grandTotal  = purchases.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+    const purchases  = Store.purchases;
+    const paidByItem = this._computePaidByItem();
+    const grandTotal = purchases.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+    const grandPaid  = purchases.reduce((s, i) => s + Math.min(i.qty * i.unitPrice, paidByItem[i.label] || 0), 0);
+    const grandPct   = grandTotal > 0 ? (grandPaid / grandTotal) * 100 : 0;
 
     const rows = purchases.map(item => {
-      const sub     = item.qty * item.unitPrice;
+      const total   = item.qty * item.unitPrice;
+      const itemPaid = Math.min(total, paidByItem[item.label] || 0);
+      const pct     = total > 0 ? Math.min(100, (itemPaid / total) * 100) : 0;
+      const done    = pct >= 99.9;
       const qtyFmt  = Number.isInteger(item.qty)
         ? item.qty
-        : item.qty.toLocaleString('pt-BR') + ' kg';
-      return `<tr>
-        <td>${item.label}</td>
+        : item.qty.toLocaleString('pt-BR') + ' kg';
+
+      return `<tr class="nf-row${done ? ' nf-row--done' : ''}">
+        <td class="nf-item-cell">
+          <span class="nf-item-name">${item.label}</span>
+          <div class="nf-bar" role="progressbar"
+               aria-valuenow="${Math.round(pct)}"
+               aria-valuemin="0" aria-valuemax="100"
+               title="${Math.round(pct)}% pago">
+            <div class="nf-bar-fill" style="width:${pct}%"></div>
+          </div>
+        </td>
         <td class="num">${qtyFmt}</td>
         <td class="num">${Formatter.BRL(item.unitPrice)}</td>
-        <td class="num">${Formatter.BRL(sub)}</td>
+        <td class="num">${Formatter.BRL(total)}</td>
       </tr>`;
     }).join('');
 
     return `
       <section class="nota-fiscal" aria-label="Nota fiscal das compras">
-        <h2 class="nota-fiscal-title">🛒 O que foi comprado</h2>
-        <p class="nota-fiscal-subtitle">Lista completa da compra no terreiro</p>
+        <div class="nota-fiscal-header">
+          <div>
+            <h2 class="nota-fiscal-title">🛒 O que foi comprado</h2>
+            <p class="nota-fiscal-subtitle">Lista completa — itens riscados já foram 100% pagos</p>
+          </div>
+          <div class="nota-fiscal-summary">
+            <span class="nfs-label">Pago da nota</span>
+            <strong class="nfs-value">${Formatter.BRL(grandPaid)}</strong>
+            <span class="nfs-of">de ${Formatter.BRL(grandTotal)}</span>
+          </div>
+        </div>
+        <div class="nf-grand-bar" role="progressbar"
+             aria-valuenow="${Math.round(grandPct)}"
+             aria-valuemin="0" aria-valuemax="100">
+          <div class="nf-grand-bar-fill" style="width:${grandPct}%"></div>
+          <span class="nf-grand-bar-label">${Math.round(grandPct)}% da nota pago</span>
+        </div>
         <table class="item-table nota-fiscal-table">
           <thead>
             <tr>

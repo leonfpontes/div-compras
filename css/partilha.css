@@ -28,20 +28,17 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-  padding: 0 1rem 14rem;
+  padding: 0 1rem 4rem;
 }
 
 .partilha-card {
-  background: linear-gradient(var(--surface), var(--surface)) padding-box,
-              linear-gradient(145deg, rgba(201,168,76,0.30), rgba(180,96,48,0.18), rgba(201,168,76,0.14)) border-box;
-  border: 1px solid transparent;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 2rem;
   width: 100%;
   max-width: 560px;
-  box-shadow: var(--shadow-gold), 0 24px 64px rgba(0,0,0,0.60);
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 100px), transparent 100%);
-  mask-image: linear-gradient(to bottom, black calc(100% - 100px), transparent 100%);
+  box-shadow: var(--shadow-card);
 }
 
 /* ── Section title ── */
@@ -73,8 +70,7 @@
 .partilha-total-value {
   font-size: 1.85rem;
   font-weight: 700;
-  color: var(--gold);
-  text-shadow: 0 0 18px rgba(201, 168, 76, 0.55);
+  color: var(--fire);
   font-variant-numeric: tabular-nums;
 }
 
@@ -92,7 +88,7 @@
 
 .partilha-not-found h1 {
   font-size: 1.8rem;
-  color: var(--gold);
+  color: var(--copper);
 }
 
 .partilha-not-found p {

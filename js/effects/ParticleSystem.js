@@ -56,9 +56,9 @@ class ParticleSystem {
 
   _colorFor(type) {
     const palettes = {
-      star:  ['#ffffff', '#fff6d0', '#fde8a0', '#e8d060'],
-      ember: ['#c9a84c', '#e0c060', '#d4a030', '#f0d060'],
-      spark: ['#ff9040', '#f06820', '#e05010', '#ff7030'],
+      star:  ['#8b3a0a', '#a04820', '#6b2a08', '#7a3010'],
+      ember: ['#c9823c', '#a04018', '#b86028', '#d49040'],
+      spark: ['#d04010', '#b83010', '#c05020', '#e05828'],
     };
     const pal = palettes[type];
     return pal[Math.floor(Math.random() * pal.length)];

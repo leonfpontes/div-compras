@@ -6,7 +6,6 @@
 class PartilhaPage {
   constructor() {
     this._particles = null;
-    this._candles   = null;
     this._init();
   }
 
@@ -31,7 +30,6 @@ class PartilhaPage {
 
   _setupEffects() {
     this._particles = new ParticleSystem(document.getElementById('canvas-bg'));
-    this._candles   = new CandleEffect(document.getElementById('canvas-candles'));
   }
 
   // ─── Render ───────────────────────────────────────────────────────────────

@@ -241,6 +241,40 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Nota fiscal ── */
+.nota-fiscal {
+  margin-top: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem 1.5rem 1.2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.nota-fiscal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.nota-fiscal-subtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.1rem;
+}
+
+.nota-fiscal-table {
+  margin-bottom: 0;
+}
+
+.nota-fiscal-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── Responsive ── */
 @media (max-width: 760px) {
   .resumo-stats {

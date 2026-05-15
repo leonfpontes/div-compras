@@ -135,4 +135,34 @@ const Store = Object.freeze({
       ],
     },
   ]),
+
+  /**
+   * Nota fiscal completa — fonte: Compra_Pilão_Ouro.csv
+   * qty pode ser decimal (ex: Banha de Ori = 0,175 kg)
+   */
+  purchases: Object.freeze([
+    { label: 'Bacia de Ágata 36',         qty: 2,     unitPrice: 57.90  },
+    { label: 'Conjunto Ração Feminino',    qty: 1,     unitPrice: 39.90  },
+    { label: 'Gamela Oval Grande',         qty: 1,     unitPrice: 59.90  },
+    { label: 'Punhal tamanho 2',           qty: 31,    unitPrice: 4.90   },
+    { label: 'Esfera de Ferro',            qty: 10,    unitPrice: 4.00   },
+    { label: 'Cabaça 4',                   qty: 10,    unitPrice: 39.90  },
+    { label: 'Ossum',                      qty: 20,    unitPrice: 1.40   },
+    { label: 'Yerossum pc 20g',            qty: 2,     unitPrice: 10.00  },
+    { label: 'Efum',                       qty: 6,     unitPrice: 7.00   },
+    { label: 'Pemba Amarela',              qty: 6,     unitPrice: 1.00   },
+    { label: 'Pemba Azul Claro',           qty: 2,     unitPrice: 1.00   },
+    { label: 'Pemba Azul Escuro',          qty: 2,     unitPrice: 1.00   },
+    { label: 'Pemba Branca',               qty: 8,     unitPrice: 1.00   },
+    { label: 'Pemba Lilás',                qty: 2,     unitPrice: 1.00   },
+    { label: 'Pemba Marrom',               qty: 2,     unitPrice: 1.00   },
+    { label: 'Pemba Preta',                qty: 4,     unitPrice: 1.00   },
+    { label: 'Pemba Rosa',                 qty: 2,     unitPrice: 1.00   },
+    { label: 'Pemba Vermelha',             qty: 6,     unitPrice: 1.00   },
+    { label: 'Pemba Verde',                qty: 4,     unitPrice: 1.00   },
+    { label: 'Bacia de Ágata 40',          qty: 1,     unitPrice: 77.90  },
+    { label: 'Garfo de Exu sem pé 10cm',   qty: 44,    unitPrice: 3.90   },
+    { label: 'Banha de Ori',               qty: 0.175, unitPrice: 170.00 },
+    { label: 'Cabaça 0',                   qty: 3,     unitPrice: 4.00   },
+  ]),
 });

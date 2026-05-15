@@ -79,10 +79,55 @@ class ResumoPage {
           ${people.map(p => this._renderPersonRow(p)).join('')}
         </ul>
 
+        <!-- ── Nota fiscal completa ── -->
+        ${this._renderPurchasesTable()}
+
       </div>
     `;
 
     this._bindEvents(root);
+  }
+
+  _renderPurchasesTable() {
+    const purchases   = Store.purchases;
+    const grandTotal  = purchases.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+
+    const rows = purchases.map(item => {
+      const sub     = item.qty * item.unitPrice;
+      const qtyFmt  = Number.isInteger(item.qty)
+        ? item.qty
+        : item.qty.toLocaleString('pt-BR') + ' kg';
+      return `<tr>
+        <td>${item.label}</td>
+        <td class="num">${qtyFmt}</td>
+        <td class="num">${Formatter.BRL(item.unitPrice)}</td>
+        <td class="num">${Formatter.BRL(sub)}</td>
+      </tr>`;
+    }).join('');
+
+    return `
+      <section class="nota-fiscal" aria-label="Nota fiscal das compras">
+        <h2 class="nota-fiscal-title">🛒 O que foi comprado</h2>
+        <p class="nota-fiscal-subtitle">Lista completa da compra no terreiro</p>
+        <table class="item-table nota-fiscal-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="num">Qtde</th>
+              <th class="num">Unit.</th>
+              <th class="num">Total</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Total geral das compras</td>
+              <td class="num">${Formatter.BRL(grandTotal)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    `;
   }
 
   _renderPersonRow(person) {

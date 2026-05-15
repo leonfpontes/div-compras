@@ -24,7 +24,7 @@ class PersonCard {
     card.className = 'person-card';
     card.setAttribute('role', 'listitem');
     card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `Abrir partilha de ${this._person.name}`);
+    card.setAttribute('aria-label', `Ver cota de ${this._person.name}`);
 
     const initials = Formatter.initials(this._person.name);
     const total    = this._total();

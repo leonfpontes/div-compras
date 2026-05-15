@@ -118,6 +118,26 @@ body.modal-open { overflow: hidden; }
   padding: 0 0.5rem;
 }
 
+.header-resumo-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  padding: 0.4rem 1.1rem;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-bright);
+  border-radius: 99px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-resumo-link:hover {
+  background: rgba(139, 94, 26, 0.22);
+  box-shadow: 0 2px 12px rgba(139, 94, 26, 0.20);
+}
+
 /* ============================================================
    Main Layout & Cards Grid
    ============================================================ */

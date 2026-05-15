@@ -33,13 +33,13 @@ class PixModal {
         <div class="modal-header-divider" aria-hidden="true"></div>
         <div class="modal-items-container"></div>
         <div class="modal-total-row">
-          <span>Total a pagar</span>
+          <span>Sua cota total</span>
           <strong class="modal-total-value"></strong>
         </div>
         <div class="pix-section">
-          <p class="pix-label">Chave PIX &mdash; Telefone</p>
+          <p class="pix-label">Chave PIX — Telefone</p>
           <p class="pix-instruction">
-            Abra o app do seu banco, acesse o PIX e cole a chave abaixo.
+            Abre o banco, vai no PIX, cola a chave e manda o dinheiro. Simples assim! 😄
           </p>
           <div class="pix-key-row">
             <code class="pix-key-value"></code>
@@ -48,8 +48,8 @@ class PixModal {
           <p class="pix-feedback" aria-live="polite"></p>
         </div>
         <div class="modal-actions">
-          <button class="share-btn" aria-label="Copiar link de compartilhamento">
-            <span class="share-btn-icon" aria-hidden="true">🔗</span> Compartilhar link
+          <button class="share-btn" aria-label="Copiar link para compartilhar">
+            <span class="share-btn-icon" aria-hidden="true">📲</span> Mandar no Zap
           </button>
           <button class="mark-paid-btn"></button>
         </div>
@@ -95,7 +95,7 @@ class PixModal {
     const onSuccess = () => {
       btn.textContent = 'Copiado ✓';
       btn.classList.add('copied');
-      feedback.textContent = 'Chave copiada! Cole no campo PIX do seu banco.';
+      feedback.textContent = 'Copiado! Agora vai lá pagar 😄';
       setTimeout(() => {
         btn.textContent = 'Copiar';
         btn.classList.remove('copied');
@@ -140,10 +140,10 @@ class PixModal {
     const onSuccess = () => {
       btn.classList.add('copied');
       btn.innerHTML = '<span aria-hidden="true">✓</span> Link copiado!';
-      feedback.textContent = 'Cole no WhatsApp e envie para ' + this._person.name + '.';
+      feedback.textContent = 'Link copiado! Manda pro ' + this._person.name + ' no Zap 📲';
       setTimeout(() => {
         btn.classList.remove('copied');
-        btn.innerHTML = '<span class="share-btn-icon" aria-hidden="true">🔗</span> Compartilhar link';
+        btn.innerHTML = '<span class="share-btn-icon" aria-hidden="true">�</span> Mandar no Zap';
         feedback.textContent = '';
       }, 3500);
     };
@@ -179,7 +179,7 @@ class PixModal {
       feedback.textContent = 'Marcação removida.';
     } else {
       this._paidStore.markPaid(id);
-      feedback.textContent = this._person.name + ' marcado(a) como pago ✓';
+      feedback.textContent = this._person.name + ' pagou! A macumba agradece 🙏';
     }
 
     this._refreshPaidUI();
@@ -192,7 +192,7 @@ class PixModal {
     if (!this._person) return;
     const paid = this._paidStore.isPaid(this._person.id);
     const btn  = this._element.querySelector('.mark-paid-btn');
-    btn.textContent = paid ? 'Desfazer pagamento' : 'Marcar como pago ✓';
+    btn.textContent = paid ? 'Desmarcar pagamento' : 'Tá pago! ✓';
     btn.classList.toggle('is-paid', paid);
     this._element.querySelector('.modal-panel').classList.toggle('panel--paid', paid);
   }

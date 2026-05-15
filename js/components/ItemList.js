@@ -37,13 +37,13 @@ class ItemList {
           <th>Item</th>
           <th>Qtde</th>
           <th>Unit.</th>
-          <th>Total</th>
+          <th>Subtotal</th>
         </tr>
       </thead>
       <tbody>${rows}</tbody>
       <tfoot>
         <tr>
-          <td colspan="3">Total</td>
+          <td colspan="3">Total da sua cota</td>
           <td>${Formatter.BRL(this._total())}</td>
         </tr>
       </tfoot>

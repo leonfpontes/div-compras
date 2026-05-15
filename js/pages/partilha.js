@@ -21,7 +21,7 @@ class PartilhaPage {
       return;
     }
 
-    document.title = `${person.name} — Partilha Sagrada`;
+    document.title = `${person.name} 🐄 — Vaquinha da Macumba`;
     this._setupEffects();
     this._render(person);
   }
@@ -41,26 +41,26 @@ class PartilhaPage {
     root.innerHTML = `
       <header class="site-header">
         <span class="header-symbol" aria-hidden="true">✦</span>
-        <p class="partilha-greeting">Sua parte na partilha</p>
+        <p class="partilha-greeting">Sua cota na vaquinha 🐄</p>
         <h1 class="partilha-name">${person.name}</h1>
         <div class="header-divider" aria-hidden="true"></div>
       </header>
 
       <main class="partilha-main">
-        <section class="partilha-card" aria-label="Detalhes da partilha">
+        <section class="partilha-card" aria-label="Detalhes da sua cota">
 
-          <h2 class="partilha-section-title">Itens</h2>
+          <h2 class="partilha-section-title">O que veio pra você 👀</h2>
           <div id="partilha-items"></div>
 
           <div class="partilha-total-row">
-            <span>Total a pagar</span>
+            <span>Sua cota total</span>
             <strong class="partilha-total-value">${Formatter.BRL(total)}</strong>
           </div>
 
           <div class="pix-section">
-            <p class="pix-label">Chave PIX &mdash; Telefone</p>
+            <p class="pix-label">Chave PIX — Telefone</p>
             <p class="pix-instruction">
-              Abra o app do seu banco, acesse o PIX e cole a chave abaixo.
+              Abre o banco, vai no PIX, cola a chave e manda o dinheiro. Simples assim! 😄
             </p>
             <div class="pix-key-row">
               <code class="pix-key-value" id="pix-key-display"></code>
@@ -91,8 +91,8 @@ class PartilhaPage {
     root.innerHTML = `
       <div class="partilha-not-found">
         <span class="header-symbol" aria-hidden="true">✦</span>
-        <h1>Partilha não encontrada</h1>
-        <p>O link pode estar incorreto. Solicite um novo link ao responsável.</p>
+        <h1>Cota não encontrada 😕</h1>
+        <p>Esse link tá errado ou você não tá na lista. Pede um link novo pro responsável!</p>
       </div>
     `;
   }
@@ -106,7 +106,7 @@ class PartilhaPage {
     const onSuccess = () => {
       btn.textContent = 'Copiado ✓';
       btn.classList.add('copied');
-      feedback.textContent = 'Chave copiada! Cole no campo PIX do seu banco.';
+      feedback.textContent = 'Copiado! Agora vai lá pagar 😄';
       setTimeout(() => {
         btn.textContent = 'Copiar';
         btn.classList.remove('copied');

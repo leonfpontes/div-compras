@@ -1,0 +1,274 @@
+/* ============================================================
+   resumo.css — estilos da página de prestação de contas
+   ============================================================ */
+
+.resumo-container {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+/* ── Stats cards ── */
+.resumo-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.stat-of {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.stat-card--total  .stat-value { color: var(--gold); }
+.stat-card--paid   .stat-value { color: #2a7040; }
+.stat-card--pending .stat-value { color: var(--fire); }
+.stat-card--count  .stat-value { color: var(--copper); }
+
+/* ── Barra de progresso ── */
+.resumo-progress {
+  position: relative;
+  background: rgba(139, 94, 26, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  height: 28px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper), var(--gold-light));
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 2px;
+}
+
+.progress-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  mix-blend-mode: multiply;
+}
+
+/* ── Toolbar ── */
+.resumo-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.resumo-refresh-btn {
+  padding: 0.5rem 1.2rem;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease;
+}
+
+.resumo-refresh-btn:hover { background: rgba(139, 94, 26, 0.18); }
+
+.resumo-back-btn {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  font-family: inherit;
+  font-size: 0.84rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.resumo-back-btn:hover { border-color: var(--border-bright); color: var(--text); }
+
+/* ── Lista de pessoas ── */
+.resumo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ── Linha de pessoa ── */
+.resumo-person {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.25s ease;
+}
+
+.resumo-person--paid {
+  border-color: rgba(42, 128, 64, 0.45);
+}
+
+.resumo-person--paid .rp-avatar {
+  background: linear-gradient(135deg, #2a6e40, #3db860);
+}
+
+.resumo-person-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr auto auto 24px;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.18s ease;
+}
+
+.resumo-person-header:hover { background: var(--surface-hover); }
+
+.rp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--copper), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.rp-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.rp-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+}
+
+.rp-badge--paid {
+  background: rgba(42, 110, 64, 0.14);
+  border: 1px solid rgba(42, 128, 64, 0.40);
+  color: #1e6030;
+}
+
+.rp-badge--pending {
+  background: rgba(192, 74, 24, 0.10);
+  border: 1px solid rgba(192, 74, 24, 0.30);
+  color: var(--fire);
+}
+
+.rp-total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.rp-chevron {
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+/* ── Tabela de itens expandida ── */
+.resumo-person-items {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1.1rem 1rem;
+  background: rgba(255, 250, 240, 0.50);
+}
+
+.resumo-item-table {
+  margin-bottom: 0;
+}
+
+.resumo-item-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .resumo-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .resumo-container { padding: 1.2rem 0.85rem 5rem; }
+
+  .resumo-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .stat-value { font-size: 1.15rem; }
+
+  .resumo-person-header {
+    grid-template-columns: 36px 1fr auto 20px;
+    gap: 0.6rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  /* esconde badge no mobile pra não estourar — status fica na borda colorida */
+  .rp-badge { display: none; }
+
+  .rp-name  { font-size: 0.92rem; }
+  .rp-total { font-size: 1rem; }
+
+  .resumo-person-items { padding: 0.6rem 0.75rem 0.85rem; }
+}

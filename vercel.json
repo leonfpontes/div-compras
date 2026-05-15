@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/p/:id", "destination": "/partilha.html?p=:id" }
+    { "source": "/p/:id",  "destination": "/partilha.html?p=:id" },
+    { "source": "/resumo", "destination": "/resumo.html" }
   ]
 }
